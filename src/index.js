@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+// import * as serviceWorker from "./serviceWorker";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const enableConcurrentMode = false;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+if (enableConcurrentMode) {
+    /* This crash Swiper */
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+} else {
+    /* Will display the following warning:
+     *
+     * Warning: ReactDOM.render is no longer supported in
+     * React 18. Use createRoot instead. Until you switch
+     * to the new API, your app will behave as if it's
+     * running React 17. Learn more:
+     * https://reactjs.org/link/switch-to-createroot
+     */
+    ReactDOM.render(<App />, document.getElementById("root"));
+}
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+// serviceWorker.unregister();
